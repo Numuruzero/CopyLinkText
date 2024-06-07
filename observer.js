@@ -1,38 +1,20 @@
+// Create a listener which adds the Copy Text function to the context menu on links
 chrome.runtime.onInstalled.addListener(async () => {
     chrome.contextMenus.create({
-        id: 'Copy',
-        title: 'Copy Stuff',
+        id: 'CopyText',
+        title: 'Copy Link Text',
         type: 'normal',
         contexts: ['link']
     });
 });
 
-// Legacy function grabbed from web search
-//
-// function mycallback(info, tab) {
-//     chrome.tabs.sendMessage(tab.id, "getClickedEl", {frameId: info.frameId}, data => {
-//         elt = data.value;
-//     });
-// }
-
-// async function getText() {
-//     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
-//     const response = await chrome.tabs.sendMessage(tab.id, {call: "getClickedEl"});
-//     // do something with response here, not outside the function
-//     console.log(response);
-//     elt = await response;
-//   };
-  
-// Open a new search tab when the user clicks a context menu
-
+// Grab the ID of the current tab and send an activation message to the listener in the content script
 async function requestText() {
-    console.log('Requesting tab');
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-    console.log(`Requesting text from tab ${tab.id}`);
     chrome.tabs.sendMessage(tab.id, {msg: "copyLinkText"});
 };
 
+// Activates above function when the context menu item is clicked
 chrome.contextMenus.onClicked.addListener((item) => {
-    console.log('Triggered');    
     requestText();
 });

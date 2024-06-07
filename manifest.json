@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Copy Link Text",
-    "description": "Baby's First Extension",
+    "description": "Copy link text with a simple right-click menu button",
     "version": "1.0",
     "permissions": ["contextMenus", "storage", "scripting", "activeTab"],
     "background": {
@@ -18,12 +18,9 @@
             ]
         }
     ],
-    "action": {
-    "default_popup": "hello.html"
-    },
     "icons": {
-    "16": "globalGoogle16.png",
-    "48": "globalGoogle48.png",
-    "128": "globalGoogle128.png"
+    "16": "CLT16.png",
+    "48": "CLT48.png",
+    "128": "CLT128.png"
     }
 }
