@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Copy Link Text",
+    "description": "Baby's First Extension",
+    "version": "1.0",
+    "permissions": ["contextMenus", "storage", "scripting", "activeTab"],
+    "background": {
+        "service_worker": "observer.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "searcher.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "action": {
+    "default_popup": "hello.html"
+    },
+    "icons": {
+    "16": "globalGoogle16.png",
+    "48": "globalGoogle48.png",
+    "128": "globalGoogle128.png"
+    }
+}
